@@ -8,8 +8,8 @@ class User < ApplicationRecord
   validates :surname_kana, presence: true
   validates :first_name_kana, presence: true
   validates :nickname, presence: true
-  validates :email, presence: true, unique: true
-  validates :encrypted_password, presence: true
+  # validates :email, presence: true, unique: true
+  # validates :encrypted_password, presence: true
   validates :birthday, presence: true
 
 end
