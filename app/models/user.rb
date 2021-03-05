@@ -4,8 +4,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  # validates :email, presence: true, unique: true
-  # validates :encrypted_password, presence: true
   validates :birthday, presence: true
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z{6,}/.freeze
