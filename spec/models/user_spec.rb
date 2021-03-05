@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
      it 'first_nameが空では登録できない' do
       @user.first_name = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include "First name can't be blank", "First name 全角文字を使用してください"
+      expect(@user.errors.full_messages).to include "First name can't be blank"
      end
      it 'first_nameに半角英字で入力されていた場合は登録できない' do
       @user.first_name = 'a'
@@ -62,7 +62,7 @@ RSpec.describe User, type: :model do
      it 'surname_kanaが空では登録できない' do
       @user.surname_kana = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include "Surname kana can't be blank", "Surname kana カタカナを使用してください"
+      expect(@user.errors.full_messages).to include "Surname kana can't be blank"
      end
      it 'surname_kanaに　漢字で入力していた場合は登録できない' do
       @user.surname_kana = '山田'
@@ -77,7 +77,7 @@ RSpec.describe User, type: :model do
      it 'first_name_kanaが空では登録できない' do
       @user.first_name_kana = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include "First name kana can't be blank","First name kana カタカナを使用してください"
+      expect(@user.errors.full_messages).to include "First name kana can't be blank"
      end
      it 'first_name_kanaに　漢字で入力していた場合は登録できない' do
       @user.first_name_kana = '太郎'
@@ -114,12 +114,12 @@ RSpec.describe User, type: :model do
      it 'passwordが空では登録できない' do
       @user.password = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include "Password can't be blank","Password には英字と数字の両方を含めて設定してください","Password confirmation doesn't match Password"
+      expect(@user.errors.full_messages).to include "Password can't be blank"
      end
      it 'passwordが全角では登録できない' do
       @user.password = 'abc１２３'
       @user.valid?
-      expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password", "Password には英字と数字の両方を含めて設定してください"
+      expect(@user.errors.full_messages).to include "Password には英字と数字の両方を含めて設定してください"
      end
      it 'passwordが5文字以下の場合登録できない' do
       @user.password = 'abc12'
