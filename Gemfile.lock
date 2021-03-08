@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hash (3.1.0)
+      activesupport (>= 5.0.0)
     activejob (6.0.3.5)
       activesupport (= 6.0.3.5)
       globalid (>= 0.3.6)
@@ -164,6 +166,10 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (13.0.3)
+    ransack (2.4.2)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -265,6 +271,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_hash
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
@@ -278,6 +285,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4)
   puma (~> 3.11)
   rails (~> 6.0.0)
+  ransack
   rspec-rails (~> 4.0.0)
   rubocop
   sass-rails (~> 5)
