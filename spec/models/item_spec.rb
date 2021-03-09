@@ -66,8 +66,18 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include "Price is invalid"
      end
-     it 'priceに数字以外が入力されている場合は出品できない' do
-      @item.price = 'TEST'
+     it '商品価格が半角英数字混合では出品できない' do
+      @item.price = '500aaa111'
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Price is invalid"
+     end
+     it '商品価格が半角英字のみでは出品できない' do
+      @item.price = 'aaa'
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Price is invalid"
+     end
+     it '商品価格が全角文字では出品できない' do
+      @item.price = '５００'
       @item.valid?
       expect(@item.errors.full_messages).to include "Price is invalid"
      end
