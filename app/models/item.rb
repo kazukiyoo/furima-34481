@@ -6,10 +6,12 @@ class Item < ApplicationRecord
   belongs_to :days_to_delivery
   belongs_to :prefecture
   belongs_to :user
+  has_one_attached :image
 
   validates :product_name, presence: true
   validates :price, presence: true
   validates :description, presence: true
+  validates :image, presence: true
   validates :status_id, numericality: { other_than: 1 }
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :burden_id, numericality: { other_than: 1 }
