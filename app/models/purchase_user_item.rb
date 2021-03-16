@@ -3,15 +3,15 @@ class PurchaseUserItem
   attr_accessor :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :user_id, :item_id
 
   with_options presence: true do
-  validates :postal_code
   validates :prefecture_id
-  validates :municipality
+  validates :municipality, numericality: { other_than: 1 }
   validates :address
-  validates :phone_number
-
   validates :user_id
   validates :item_id
   end
+
+  validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'は半角数字とハイフンを入れて入力してください' }
+  validates :phone_number,presence: true, format: { with: /\A\d{11}\z/, message: 'は11桁で入力してください' }
 
   def save
     user_item = UserItem.create(user_id: user_id, item_id: item_id)
