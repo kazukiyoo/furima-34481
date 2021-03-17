@@ -56,12 +56,17 @@ RSpec.describe PurchaseUserItem, type: :model do
       it '電話番号が空の場合登録できない' do
         @purchase_user_item.phone_number = ''
         @purchase_user_item.valid?
-        expect(@purchase_user_item.errors.full_messages).to include "Phone number は11桁で入力してください"
+        expect(@purchase_user_item.errors.full_messages).to include "Phone number can't be blank", "Phone number は10桁もしくは11桁で入力してください"
+      end
+      it '電話番号に英数字が入力されていた場合登録できない' do
+        @purchase_user_item.phone_number = '090aaaaaaaa'
+        @purchase_user_item.valid?
+        expect(@purchase_user_item.errors.full_messages).to include "Phone number は10桁もしくは11桁で入力してください"
       end
       it '電話番号が11桁以下の場合登録できない' do
-        @purchase_user_item.phone_number = '1234567890'
+        @purchase_user_item.phone_number = '123456789'
         @purchase_user_item.valid?
-        expect(@purchase_user_item.errors.full_messages).to include "Phone number は11桁で入力してください"
+        expect(@purchase_user_item.errors.full_messages).to include "Phone number は10桁もしくは11桁で入力してください"
       end
       it 'tokenが空では登録できない' do
         @purchase_user_item.token = ''

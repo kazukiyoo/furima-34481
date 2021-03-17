@@ -12,7 +12,7 @@ class PurchaseUserItem
   end
 
   validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'は半角数字とハイフンを入れて入力してください' }
-  validates :phone_number,presence: true, format: { with: /\A\d{11}\z/, message: 'は11桁で入力してください' }
+  validates :phone_number,presence: true, format: { with: /\A\d{10,11}\z/, message: 'は10桁もしくは11桁で入力してください' }
 
   def save
     user_item = UserItem.create(user_id: user_id, item_id: item_id)
