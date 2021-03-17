@@ -1,13 +1,14 @@
 class PurchaseUserItem
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :user_id, :item_id
+  attr_accessor :token, :postal_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :user_id, :item_id
 
   with_options presence: true do
-  validates :prefecture_id
-  validates :municipality, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :municipality
   validates :address
   validates :user_id
   validates :item_id
+  validates :token
   end
 
   validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'は半角数字とハイフンを入れて入力してください' }
