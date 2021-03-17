@@ -1,13 +1,20 @@
 class UserItemsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @item = Item.find(params[:item_id])
     @purchase_user_item = PurchaseUserItem.new
+    if current_user.id == @item.user.id
+      redirect_to root_path
+     else 
+      if @item.user_item.present?
+        redirect_to root_path
+      end
+    end
   end
 
   def create
     @item = Item.find(params[:item_id])
     @purchase_user_item = PurchaseUserItem.new(purchase_user_params)
-
     if @purchase_user_item.valid?
       pay_item
       @purchase_user_item.save
